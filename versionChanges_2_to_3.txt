@@ -1,0 +1,29 @@
+Version 3 des Programms ABIMO (11/2006)
+
+Die Lauffähigkeit unter Windows XP wurde [auch für Nutzer ohne Administrator-Rechte] hergestellt.
+
+Die bebaut versiegelten Flächen werden jetzt korrekt berücksichtigt, was sich in der Dokumentation durch eine Änderung der Berechnung von rowd niederschlägt (siehe Dokumentation am Ende von Abschnitt 3):
+  statt rowd = ( 1.0F - infdach ) * vgd * kb * fbant * RDV
+  jetzt rowd = ( 1.0F - infdach ) * vgd * kd * fbant * RDV
+
+Im Protokoll wurde die Datumsangabe korrigiert und es werden folgende Werte ausgewiesen:
+-	die Anzahl aller Flächen, deren Wert 0 war und auf 100 gesetzt wurde
+-	die Anzahl der Records die ignoriert wurden da die Nutzung 0 war
+-	die Anzahl der gelesenen und geschriebenen Records
+
+Vor der Berechnung wird geprüft, ob es sich bei der Quelldatei um einen validen File handelt, dazu müssen folgende Felder gegeben sein: 
+NUTZUNG, CODE, REGENJA, REGENSO, FLUR, TYP, FELD_30, FELD_150, BEZIRK, PROBAU, PROVGU, VGSTRASSE, KAN_BEB, KAN_VGU, KAN_STR, BELAG1, BELAG2, BELAG3, BELAG4, STR_BELAG1, STR_BELAG2, STR_BELAG3, STR_BELAG4, FLGES, STR_FLGES, NUTZUNG
+
+Der seltene Fall, dass der Gesamtabfluss größer als der Niederschlag ist, ist auf folgende Ursachen zurückzuführen:
+-	Wenn wie im Fall einiger Beispiele die Werte Feld_30 und Feld_150 nicht festgelegt sind, ist der Programm-interne nfK-Wert unbestimmt, was z.T. den Fehler verursacht hat. Dies wurde dahingehend behoben, dass in diesem Fall ein nfK-Wert von 13.0 zugrunde gelegt wird.
+-	Abimo ist kein Bilanzmodell, sondern basiert auf der nichtlinearen Bagrov-Gleichung. Um diese anzuwenden, wurden für den vorliegenden Datenbestand zahlreiche empirische Beziehungen aufgestellt. Für die versiegelten Flächen, sowie die Straßen- und Dachflächen wurden Bagrov-Werte und Infiltrationsparameter festgelegt. Dies sind die Eichungsparameter des Modells, die zwar als Standardwerte ins Programm integriert wurden, aber durch den Nutzer veränderbar waren und sind. Gegebenenfalls kann und sollte das Modell neu kalibriert werden. In der vorliegenden Version von ABIMO haben wir deshalb die Möglichkeit der Kalibrierung beibehalten. Dies geschieht durch die Datei config.xml. Wenn diese Datei nicht im Startverzeichnis gefunden wird, werden die bisherigen Standardwerte verwendet.
+
+Zwei neue Baustrukturtypen (73 und 74) wurden eingeführt. Sie werden behandelt, wie der Typ 72.
+
+Die Verdunstung wird als zusätzlicher Wert in die Ausgabedatei übernommen
+
+Die config.xml liefert neben der Kalibrierung des Modells die Möglichkeit, die Nachkommastellen der Ergebnisse festzulegen. Ist keine config.xml im Verzeichnis der Abimo3.exe vorhanden, werden fest eingestellte Werte angenommen, die denen der mitgelieferten config.xml entsprechen.
+
+Die Angabe der Zieldatei ist nun möglich. Das Protokoll ist im gleichen Verzeichnis wie die Zieldatei zu finden.
+
+Zur Installation ist die Datei abimo.zip in ein freiwählbares Verzeichnis zu entpacken.

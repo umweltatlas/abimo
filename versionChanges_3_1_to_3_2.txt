@@ -1,0 +1,39 @@
+Bugfixes:
+
+- Berechnung der "VERDUNSTUNG" für die Ausgabe:
+  .bisher (Version 3 und 3.1) wurde ein falscher Wert für die "VERDUNSTUNG" in der Resultatdatei ausgegeben,
+   dieser berechnete sich wie folgt: verdunst = regenja - r
+   er wird jetzt wie folgt berechnet: verdunst = regenja * niedKorrF - r
+   Bisher war der Niederschlagskorrekturfaktor=1.09. Somit wurde der Verdunstungswert bisher mit einem Wert von 0.09 * regenja zu klein ausgegeben. 
+
+- Überarbeitung des ausgegebenen DBase Formates:
+  .Ausgabedatei Feldname "VERDUNSTUNG" auf "VERDUNSTUN" geändert
+   (Grund: die Feldnamen (Spaltennamen) von DBase(IV) dürfen maximal 10 Zeichen lang sein)
+  .Änderung der Codepage (Language Driver) der DBase Resultatdatei von 0x10 (German) auf 0x57 (ANSI)
+   (Grund: die von mir erhaltene Eingangsdatei mit den Daten des Senats hat den Language Driver ANSI)
+  .Das Auffüllen der leeren Zeichen in den einzelnen Feldern wurde überarbeitet. Bisher wurden die Felder mit
+   den leeren Zeichen am Ende aufegfüllt. Das stellt zwar für alle mir bekannteb Programme, die DBase Dateien lesen können, kein Problem dar,
+   ist aber nicht korrekt. Jetzt wird in Abhängigkeit vom im Feld enthaltenen Wert (Float, Int, Positive/Negative Werte) korrekt aufgefüllt.
+   Ergebnis: Die Validierung des Resultates mit dem Tool (Check & Repair DBF) ist erfolgreich.
+
+Erweiterungen / Änderungen:
+- Es war und ist irrelevant, ob in der Eingangsdatei die Felder als numerisch oder Text gekennzeichnet sind,
+  solange dort Zahlen enthalten sind. Daher wurden und werden die Felder "Nutz" und "Typ" in beiden fällen korrekt eingelesen.
+  (kritisch ist es (immer noch) dann, wenn diese Felder als Text definiert wären und dort keine (validen) Zahlen enthalten sind)
+- Der Niederschlagskorrekturfaktor (NIEDKORRF) ist über die XML Datei einstellbar. Wird er dort nicht eingegeben, nimmt er den alten Wert 1.09 an.
+  (genaueres zur Konfiguration der XML Datei ist der Abimo-Dokumentation zu entnehmen)
+- Die Werte ETP, ETPS und EG sind für Bezirke in der XML Datei einstellbar. Innerhalb des Programmes sind nun lediglich folgende Default-Werte festgelegt.
+  EG: 750
+  ETP: 660
+  ETPS: 530
+  Die default Werte können ebenfalls in der XML-Datei angepasst werden.
+  (genaueres zur Konfiguration der XML Datei ist der Abimo-Dokumentation zu entnehmen)
+- Weitere Änderungen sind: Programmname auf "Abimo 3.2" geändert, Copyright auf 2009 geändert, Quellcode überarbeitet (ohne Auswirkungen auf das Programm)
+
+Dokumentation:
+- die Konfiguration mittels der XML-Datei wird ausführlich dokumentiert als neues Kapitel in die Dokumentation zu Abimo eingefügt
+- Die Dokumentation wurde hinsichtlich der neuen Änderungen (variabler Niederschlags-Korrektur-Faktor, einstellbare EG, ETP, ETPS Werte) und 
+  der Änderungen aus 3.1 (Beregnungsschalter) angepasst
+- die Dokumentation wird um einen Abschnitt zur Verdunstung erweitert (in Abimo 3.0 eingeführte ausgabe, bisher undokumentiert)
+- Die Dokumentation wird hinsichtlich der Umstellung auf XP (Abimo 3.0) angepasst
+- Die Dokumentation wird hinsichtlich der Anforderungen an die Eingangsdatei angepasst

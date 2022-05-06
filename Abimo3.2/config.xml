@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sections>
+	<comment>
+                Initiale Werte der Kalkulation von Abimo 3.2.
+                Genaueres ist der Dokumentation von Abimo entnehmen.
+	</comment>
+	<section name="Infiltrationsfaktoren">
+		<item key="Dachflaechen"   value="0.00" />
+		<item key="Belaglsklasse1" value="0.10" />
+		<item key="Belaglsklasse2" value="0.30" />
+		<item key="Belaglsklasse3" value="0.60" />
+		<item key="Belaglsklasse4" value="0.90" />
+	</section>
+	<section name="Bagrovwerte">
+		<item key="Dachflaechen"   value="0.05" />
+		<item key="Belaglsklasse1" value="0.11" />
+		<item key="Belaglsklasse2" value="0.11" />
+		<item key="Belaglsklasse3" value="0.25" />
+		<item key="Belaglsklasse4" value="0.40" />
+	</section>
+	<section name="ErgebnisNachkommaStellen">
+       		<item key="R" value="3" />
+       		<item key="ROW" value="3" />
+       		<item key="RI" value="3" />
+       		<item key="RVOL" value="3" />
+       		<item key="ROWVOL" value="3" />
+       		<item key="RIVOL" value="3" />
+		<item key="FLAECHE" value="0" /> 
+		<item key="VERDUNSTUNG" value="3" />
+	</section>
+        <section name="Gewaesserverdunstung">
+
+            <item bezirke="1-6,13-15,17"  eg="825" />
+            <item bezirke="7-12,16,18-23" eg="775" />
+
+            <!-- das ist der default wert (Bezirk=0) -->
+            <item eg="775" />
+
+        </section>
+        <section name="PotentielleVerdunstung">
+
+            <item bezirke="15,16,18,19,20"     etp="620" etps="500" />
+            <item bezirke="8,9,10,12,21,22,23" etp="630" etps="505" />
+            <item bezirke="13,14,17"           etp="640" etps="515" />
+            <item bezirke="2,3,4"              etp="650" etps="520" />
+            <item bezirke="1,5,6,7,11"         etp="660" etps="530" />
+
+            <!-- das ist der default wert (Bezirk=0) -->
+            <item etp="660" etps="530" />
+
+        </section>
+
+        <section name="Diverse">
+	
+		<!-- wenn 'true' wird BER (Beregnungshoehe landw. Nutzfl.) == 0 erzwungen, fuer alle Flaechentypen -->
+       		<item key="BERtoZero" value="false" />
+
+                <!-- Niederschlags-Korrekturfaktor -->
+                <item key="NIEDKORRF" value="1.09" />
+	</section>
+</sections>

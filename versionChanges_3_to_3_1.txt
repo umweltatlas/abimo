@@ -1,0 +1,6 @@
+Abimo 3.1 Änderungen
+
+Änderungen von Version 3 auf 3.1
+
+- in der config.xml ist es möglich für alle Flächentypen die Beregnungshöhe(BER) auf 0 zu erzwingen
+- die Anzahl der Flächen für die BER==0 erzwungen wurde, wird in der Protokoll Datei angegeben
