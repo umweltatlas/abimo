@@ -28,7 +28,7 @@ Das Programm ist von der Berliner Senatsverwaltung seit 1997 mehrmals den sich w
 -	Lauffähigkeit unter Windows XP wurde hergestellt,
 -	Vor der Berechnung wird geprüft ob es sich bei der Quelldatei um einen validen File handelt,
 -	Die bebaut versiegelten Flächen werden jetzt korrekt berücksichtigt,
--	Zwei neue Baustrukturtypen wurden eingeführt,,
+-	Zwei neue Baustrukturtypen wurden eingeführt,
 -	Die Verdunstung wird als zusätzlicher Wert in die Ausgabedatei übernommen,
 -	weitere kleinere Anpassungen.
 
